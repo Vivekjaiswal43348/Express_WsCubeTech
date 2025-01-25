@@ -18,3 +18,21 @@
 3. HTTP methods for CRUD operation (GET/POST/PUT/DELETE)
 4. MVC model
 5. UI at backend side
+
+
+# Thunder Client: a VS_Code extension tool that we will use to mock/verify BE API at FE side.
+    another tool can be used for the same purpose is Postman
+
+## GET vs POST HTTP methods
+GET: Open API can be accessible by any one
+POST: a secure API call and also mostly used to send a JSON data to BE server.
+
+## How many ways can we send data from FE to BE?
+There are three ways:
+1. Query Params (Browser URl): used when user searches something
+2. JSON Payload data: when user saves a form data
+3. Dynamic data(like ID): when user navigating to details page
+
+## Can we directly use a POST type HTTP method at BE to receive data from BE?
+No, to consume JSON type data at BE we must write this code.
+app.use(express.json());
