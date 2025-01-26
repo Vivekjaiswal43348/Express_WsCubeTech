@@ -1,9 +1,10 @@
 let express = require("express");
 const { checkToken } = require("./middleware/checkToken");
+require('dotenv').config();
 
 let app = express();
 app.use(express.json());
-const PASSWORD = "test@123";
+const PASSWORD = process.env.PASSWORD;
 
 // custom middleware-2: check password
 app.use((req, res, next) => {
@@ -63,4 +64,4 @@ app.post("/login", (req, res) => {
 	});
 });
 
-app.listen(8081);
+app.listen(process.env.PORT || 5000);
