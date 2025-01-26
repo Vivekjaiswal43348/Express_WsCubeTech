@@ -39,10 +39,11 @@ app.use(express.json());
 
 ## what is a middleware?
 A middleware is nothing but a method.
-Types of middleware: File level and route level
-File level: check will apply to all routes of a file
+
+Types of middleware: File level and route level \
+File level: check will apply to all routes of a file\
 Route Level: check will apply for specific route.
 
 Another types of middleware: Pre-dfeined and custom middle wares.
-Pre-defined: app.use(```express.json()```)
-Custom: app.use(```checkToken```)
+Pre-defined: app.use(`express.json()`)\
+Custom: app.use(`checkToken`)
