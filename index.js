@@ -2,6 +2,44 @@ let express = require("express");
 
 let app = express();
 app.use(express.json());
+const token = "12345";
+const PASSWORD = "test@123";
+const checkToken = (req, res, next) => {
+	console.log(req.query.token);
+	if (!req.query.token) {
+		res.send({
+			status: 0,
+			msg: "Token is missing!",
+		});
+	}
+	if (token !== req.query.token) {
+		res.send({
+			status: 0,
+			msg: "Inavlid token",
+		});
+	}
+	next();
+};
+//custom middleware-1: check token
+app.use(checkToken);
+
+// custom middleware-2: check password
+app.use((req, res, next) => {
+	if (!req.query.pwd) {
+		res.send({
+			status: 0,
+			msg: "Password is not there",
+		});
+	}
+
+	if (req.query.pwd !== PASSWORD) {
+		res.send({
+			status: 0,
+			msg: "Password not matched",
+		});
+	}
+	next();
+});
 
 app.get("/", (req, res) => {
 	res.send({ status: 200, msg: "This is default route!" });
@@ -33,7 +71,7 @@ app.post("/login", (req, res) => {
 	// 	bodyData: req.body,
 	// 	queryData: req.query,
 	// });
-	
+
 	/** Another way of Sending response to FE */
 	res.status(200).json({
 		status: 1,
