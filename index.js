@@ -1,27 +1,9 @@
 let express = require("express");
+const { checkToken } = require("./middleware/checkToken");
 
 let app = express();
 app.use(express.json());
-const token = "12345";
 const PASSWORD = "test@123";
-const checkToken = (req, res, next) => {
-	console.log(req.query.token);
-	if (!req.query.token) {
-		res.send({
-			status: 0,
-			msg: "Token is missing!",
-		});
-	}
-	if (token !== req.query.token) {
-		res.send({
-			status: 0,
-			msg: "Inavlid token",
-		});
-	}
-	next();
-};
-//custom middleware-1: check token
-app.use(checkToken);
 
 // custom middleware-2: check password
 app.use((req, res, next) => {
@@ -45,7 +27,7 @@ app.get("/", (req, res) => {
 	res.send({ status: 200, msg: "This is default route!" });
 });
 
-app.get("/detail", (req, res) => {
+app.get("/detail", checkToken, (req, res) => {
 	let jsonData = {
 		name: "Vinod",
 		age: 30,

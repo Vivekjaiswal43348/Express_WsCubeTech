@@ -47,3 +47,6 @@ Route Level: check will apply for specific route.
 Another types of middleware: Pre-dfeined and custom middle wares.
 Pre-defined: app.use(`express.json()`)\
 Custom: app.use(`checkToken`)
+
+## route level middle ware
+Lets convert checkToken from File level to route level middleware.
