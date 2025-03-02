@@ -25,7 +25,7 @@ A brief description of what this project does and who it's for
 5. UI at backend side
 
 
-# Thunder Client: a VS_Code extension tool that we will use to mock/verify BE API at FE side.
+## Thunder Client: a VS_Code extension tool that we will use to mock/verify BE API at FE side.
     another tool can be used for the same purpose is Postman
 
 ## GET vs POST HTTP methods
