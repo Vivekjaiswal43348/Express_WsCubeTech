@@ -3,6 +3,8 @@ const { checkToken } = require("./middleware/checkToken");
 require('dotenv').config();
 
 let app = express();
+/* It parses the JSON payload and attaches the 
+ resulting object to the req.body property */
 app.use(express.json());
 const PASSWORD = process.env.PASSWORD;
 
