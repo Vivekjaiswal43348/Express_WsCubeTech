@@ -1,5 +1,5 @@
 let express = require("express");
-const { checkToken } = require("./middleware/checkToken");
+const { checkToken, checkAppVersion } = require("./middleware/checkToken");
 require('dotenv').config();
 
 let app = express();
@@ -8,7 +8,7 @@ let app = express();
 app.use(express.json());
 const PASSWORD = process.env.PASSWORD;
 
-// custom middleware-2: check password
+// custom file-level middleware-2: check password
 app.use((req, res, next) => {
 	if (!req.query.pwd) {
 		res.send({
@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 			msg: "Password is not there",
 		});
 	}
-
+	
 	if (req.query.pwd !== PASSWORD) {
 		res.send({
 			status: 0,
@@ -35,6 +35,16 @@ app.get("/detail", checkToken, (req, res) => {
 		name: "Vinod",
 		age: 30,
 		msg: "This is detail page route!",
+	};
+	// JSON.stringify(jsonData) is not needed here, bcz we are using express framework
+	res.send({ status: 200, jsonData });
+});
+
+app.get("/contributorsList", [checkToken, checkAppVersion], (req, res) => {
+	let jsonData = {
+		name: "Vinod",
+		age: 30,
+		msg: "This is contributors List page route!",
 	};
 	// JSON.stringify(jsonData) is not needed here, bcz we are using express framework
 	res.send({ status: 200, jsonData });
