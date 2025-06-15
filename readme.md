@@ -15,7 +15,7 @@ A brief description of what this project does and who it's for
 
 
 ## what is express JS?
-
+Exress JS is a third party NPM library that helps use to write APIs in nodes JS.
 
 ## what are the core features of express JS?
 1. Easy Routing and also supports child routing.
@@ -29,8 +29,8 @@ A brief description of what this project does and who it's for
     another tool can be used for the same purpose is Postman
 
 ## GET vs POST HTTP methods
-GET: Open API can be accessible by any one
-POST: a secure API call and also mostly used to send a JSON data to BE server.
+GET API: Open API can be accessible by any one
+POST API: a secure API call and also mostly used to send a JSON data to BE server.
 
 ## How many ways can we send data from FE to BE?
 There are three ways:
@@ -38,9 +38,11 @@ There are three ways:
 2. JSON Payload data: when user saves a form data
 3. Dynamic data(like ID): when user navigating to details page
 
-## Can we directly use a POST type HTTP method at BE to receive data from BE?
-No, to consume JSON type data at BE we must write this code.
+## Can we directly use a POST type HTTP method to receive data from FE using express JS?
+No, to consume JSON type payload data at BE we must write this code.
+```javascript
 app.use(express.json());
+```
 
 ## what is a middleware?
 A middleware is nothing but a method.
@@ -49,7 +51,7 @@ Types of middleware: File level and route level \
 File level: check will apply to all routes of a file\
 Route Level: check will apply for specific route.
 
-Another types of middleware: Pre-dfeined and custom middle wares.
+Another types of middleware: Pre-defined and custom middle wares.
 Pre-defined: app.use(`express.json()`)\
 Custom: app.use(`checkToken`)
 
@@ -57,7 +59,7 @@ Custom: app.use(`checkToken`)
 Lets convert checkToken from File level to route level middleware.
 
 ## env variables
-Added .env file with env constants and accessing those gloabbly withthe hep of `dotenv` library.
+Added .env file with env constants and accessing those gloabbly with the hep of `dotenv` library.
 
 ## Intro to Mongo DB
 MongoDB is an open-source, non-relational database management system (DBMS) that stores data in JSON-like documents.
